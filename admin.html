@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إدارة قائمة مطعم أوتار</title>
+    <style>
+        :root {
+            --color-primary: #468672;
+            --color-secondary: #b1885e;
+            --color-bg: #090a0a;
+            --color-bg-light: #1c1e1d;
+            --color-text: #dfe0e0;
+            --color-text-light: #5f6362;
+            --color-white: #ffffff;
+            --color-error: #ff6b6b;
+            --color-success: #51cf66;
+            --border-radius: 8px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Login Screen */
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--color-bg) 0%, var(--color-bg-light) 100%);
+        }
+
+        .login-form {
+            background: var(--color-bg-light);
+            padding: 3rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            text-align: center;
+            min-width: 400px;
+        }
+
+        .login-form h1 {
+            color: var(--color-primary);
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: right;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--color-text-light);
+            border-radius: var(--border-radius);
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            font-size: 1rem;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 2px rgba(70, 134, 114, 0.2);
+        }
+
+        .btn {
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        .btn-primary:hover {
+            background-color: #366b5b;
+        }
+
+        .btn-secondary {
+            background-color: var(--color-secondary);
+            color: var(--color-white);
+        }
+
+        .btn-danger {
+            background-color: var(--color-error);
+            color: var(--color-white);
+        }
+
+        .alert {
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 1rem;
+        }
+
+        .alert-error {
+            background-color: rgba(255, 107, 107, 0.1);
+            border: 1px solid var(--color-error);
+            color: var(--color-error);
+        }
+
+        .alert-success {
+            background-color: rgba(81, 207, 102, 0.1);
+            border: 1px solid var(--color-success);
+            color: var(--color-success);
+        }
+
+        /* Admin Panel */
+        .admin-panel {
+            display: none;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--color-text-light);
+        }
+
+        .admin-header h1 {
+            color: var(--color-primary);
+        }
+
+        .tabs {
+            display: flex;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--color-text-light);
+        }
+
+        .tab {
+            padding: 1rem 2rem;
+            cursor: pointer;
+            border: none;
+            background: none;
+            color: var(--color-text-light);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .tab.active {
+            color: var(--color-primary);
+            border-bottom: 2px solid var(--color-primary);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Menu Items Display */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .menu-item-card {
+            background: var(--color-bg-light);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            border: 1px solid var(--color-text-light);
+        }
+
+        .menu-item-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: var(--border-radius);
+            margin-bottom: 1rem;
+        }
+
+        .menu-item-card h3 {
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-item-card .price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--color-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-item-card .description {
+            color: var(--color-text-light);
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .menu-item-card .actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        /* Form Styles */
+        .form-container {
+            background: var(--color-bg-light);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            border: 1px solid var(--color-text-light);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .image-preview {
+            max-width: 200px;
+            max-height: 150px;
+            border-radius: var(--border-radius);
+            margin-top: 1rem;
+        }
+
+        .category-section {
+            margin-bottom: 3rem;
+        }
+
+        .category-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: var(--color-bg-light);
+            border-radius: var(--border-radius);
+        }
+
+        .category-header h2 {
+            color: var(--color-primary);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: var(--color-text-light);
+        }
+
+        .limitation-notice {
+            background: rgba(255, 193, 7, 0.1);
+            border: 1px solid #ffc107;
+            color: #ffc107;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .admin-panel {
+                padding: 1rem;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .tabs {
+                overflow-x: auto;
+            }
+            
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Form -->
+    <div class="login-container" id="loginContainer">
+        <form class="login-form" id="loginForm">
+            <h1>لوحة إدارة مطعم أوتار</h1>
+            <div id="loginAlert"></div>
+            <div class="form-group">
+                <label for="username">اسم المستخدم:</label>
+                <input type="text" id="username" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="password">كلمة المرور:</label>
+                <input type="password" id="password" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">دخول</button>
+        </form>
+    </div>
+
+    <!-- Admin Panel -->
+    <div class="admin-panel" id="adminPanel">
+        <div class="admin-header">
+            <h1>إدارة قائمة الطعام</h1>
+            <button class="btn btn-secondary" onclick="logout()">خروج</button>
+        </div>
+
+        <!-- Limitation Notice -->
+        <div class="limitation-notice">
+            <strong>تنبيه:</strong> هذا نظام تجريبي. الصور لن تُحفظ على الخادم والبيانات ستُفقد عند مسح ذاكرة المتصفح. للاستخدام الفعلي، يُحتاج نظام خلفي (PHP/Node.js).
+        </div>
+
+        <!-- Tabs -->
+        <div class="tabs">
+            <button class="tab active" onclick="switchTab('view')">عرض القائمة</button>
+            <button class="tab" onclick="switchTab('add')">إضافة صنف</button>
+        </div>
+
+        <!-- View Menu Tab -->
+        <div class="tab-content active" id="viewTab">
+            <div id="menuDisplay"></div>
+        </div>
+
+        <!-- Add Item Tab -->
+        <div class="tab-content" id="addTab">
+            <div class="form-container">
+                <h2>إضافة صنف جديد</h2>
+                <div id="addAlert"></div>
+                <form id="addItemForm">
+                    <div class="form-group">
+                        <label for="category">الفئة:</label>
+                        <select id="category" class="form-control" required>
+                            <option value="signature_blends">الخلطات المميزة</option>
+                            <option value="fresh_pastries">المعجنات الطازجة</option>
+                            <option value="gourmet_treats">الحلويات الفاخرة</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nameAr">اسم الصنف (عربي):</label>
+                            <input type="text" id="nameAr" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="nameHe">اسم الصنف (عبري):</label>
+                            <input type="text" id="nameHe" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="price">السعر (₪):</label>
+                            <input type="number" id="price" class="form-control" min="1" step="1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="image">صورة الصنف:</label>
+                            <input type="file" id="image" class="form-control" accept="image/*">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="descriptionAr">الوصف (عربي):</label>
+                        <textarea id="descriptionAr" class="form-control" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="descriptionHe">الوصف (عبري):</label>
+                        <textarea id="descriptionHe" class="form-control" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <img id="imagePreview" class="image-preview" style="display: none;" alt="معاينة الصورة">
+                    </div>
+                    <button type="submit" class="btn btn-primary">إضافة الصنف</button>
+                    <button type="button" class="btn btn-secondary" onclick="resetForm()">إعادة تعيين</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simple authentication (NOT secure for production)
+        const ADMIN_USERNAME = 'admin';
+        const ADMIN_PASSWORD = 'awtar2025';
+        
+        // Menu data storage
+        let menuData = JSON.parse(localStorage.getItem('awtarMenuData')) || {
+            signature_blends: [],
+            fresh_pastries: [],
+            gourmet_treats: []
+        };
+
+        // Category names in Arabic
+        const categoryNames = {
+            signature_blends: 'الخلطات المميزة',
+            fresh_pastries: 'المعجنات الطازجة',
+            gourmet_treats: 'الحلويات الفاخرة'
+        };
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if already logged in
+            if (localStorage.getItem('awtarAdminLoggedIn') === 'true') {
+                showAdminPanel();
+            }
+
+            // Login form handler
+            document.getElementById('loginForm').addEventListener('submit', handleLogin);
+            
+            // Add item form handler
+            document.getElementById('addItemForm').addEventListener('submit', handleAddItem);
+            
+            // Image preview handler
+            document.getElementById('image').addEventListener('change', handleImagePreview);
+            
+            // Load and display menu
+            displayMenu();
+        });
+
+        function handleLogin(e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
+                localStorage.setItem('awtarAdminLoggedIn', 'true');
+                showAdminPanel();
+                showAlert('loginAlert', 'تم تسجيل الدخول بنجاح!', 'success');
+            } else {
+                showAlert('loginAlert', 'اسم المستخدم أو كلمة المرور غير صحيحة', 'error');
+            }
+        }
+
+        function showAdminPanel() {
+            document.getElementById('loginContainer').style.display = 'none';
+            document.getElementById('adminPanel').style.display = 'block';
+            displayMenu();
+        }
+
+        function logout() {
+            localStorage.removeItem('awtarAdminLoggedIn');
+            document.getElementById('loginContainer').style.display = 'flex';
+            document.getElementById('adminPanel').style.display = 'none';
+            document.getElementById('loginForm').reset();
+        }
+
+        function switchTab(tabName) {
+            // Remove active class from all tabs and contents
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            
+            // Add active class to selected tab and content
+            document.querySelector(`button[onclick="switchTab('${tabName}')"]`).classList.add('active');
+            document.getElementById(tabName + 'Tab').classList.add('active');
+        }
+
+        function handleImagePreview(e) {
+            const file = e.target.files[0];
+            const preview = document.getElementById('imagePreview');
+            
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            } else {
+                preview.style.display = 'none';
+            }
+        }
+
+        function handleAddItem(e) {
+            e.preventDefault();
+            
+            const category = document.getElementById('category').value;
+            const nameAr = document.getElementById('nameAr').value;
+            const nameHe = document.getElementById('nameHe').value;
+            const price = parseInt(document.getElementById('price').value);
+            const descriptionAr = document.getElementById('descriptionAr').value;
+            const descriptionHe = document.getElementById('descriptionHe').value;
+            const imageFile = document.getElementById('image').files[0];
+            
+            // Create item object
+            const item = {
+                id: Date.now().toString(),
+                nameAr,
+                nameHe,
+                price,
+                descriptionAr,
+                descriptionHe,
+                image: null
+            };
+
+            // Handle image (convert to base64 for demo purposes)
+            if (imageFile) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    item.image = e.target.result;
+                    addItemToMenu(category, item);
+                };
+                reader.readAsDataURL(imageFile);
+            } else {
+                addItemToMenu(category, item);
+            }
+        }
+
+        function addItemToMenu(category, item) {
+            menuData[category].push(item);
+            localStorage.setItem('awtarMenuData', JSON.stringify(menuData));
+            
+            showAlert('addAlert', 'تم إضافة الصنف بنجاح!', 'success');
+            resetForm();
+            displayMenu();
+        }
+
+        function deleteItem(category, itemId) {
+            if (confirm('هل أنت متأكد من حذف هذا الصنف؟')) {
+                menuData[category] = menuData[category].filter(item => item.id !== itemId);
+                localStorage.setItem('awtarMenuData', JSON.stringify(menuData));
+                displayMenu();
+                showAlert('addAlert', 'تم حذف الصنف بنجاح!', 'success');
+            }
+        }
+
+        function displayMenu() {
+            const menuDisplay = document.getElementById('menuDisplay');
+            let html = '';
+
+            for (const [categoryKey, items] of Object.entries(menuData)) {
+                html += `
+                    <div class="category-section">
+                        <div class="category-header">
+                            <h2>${categoryNames[categoryKey]}</h2>
+                            <span>${items.length} صنف</span>
+                        </div>
+                `;
+
+                if (items.length === 0) {
+                    html += `
+                        <div class="empty-state">
+                            <p>لا توجد أصناف في هذه الفئة</p>
+                        </div>
+                    `;
+                } else {
+                    html += '<div class="menu-grid">';
+                    items.forEach(item => {
+                        html += `
+                            <div class="menu-item-card">
+                                ${item.image ? `<img src="${item.image}" alt="${item.nameAr}">` : '<div style="height:150px;background:#333;display:flex;align-items:center;justify-content:center;color:#666;border-radius:8px;">لا توجد صورة</div>'}
+                                <h3>${item.nameAr}</h3>
+                                <div class="price">₪${item.price}</div>
+                                <div class="description">${item.descriptionAr}</div>
+                                <div class="actions">
+                                    <button class="btn btn-danger" onclick="deleteItem('${categoryKey}', '${item.id}')">حذف</button>
+                                </div>
+                            </div>
+                        `;
+                    });
+                    html += '</div>';
+                }
+                html += '</div>';
+            }
+
+            menuDisplay.innerHTML = html;
+        }
+
+        function resetForm() {
+            document.getElementById('addItemForm').reset();
+            document.getElementById('imagePreview').style.display = 'none';
+        }
+
+        function showAlert(containerId, message, type) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = `<div class="alert alert-${type}">${message}</div>`;
+            setTimeout(() => {
+                container.innerHTML = '';
+            }, 3000);
+        }
+
+        // Export menu data for integration with main website
+        function exportMenuData() {
+            const data = JSON.stringify(menuData, null, 2);
+            const blob = new Blob([data], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'awtar-menu-data.json';
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>
