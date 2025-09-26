@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="ar" class="no-js" dir="rtl">
+  <head>
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>مطعم أوتار</title>
+
+    <script>
+      document.documentElement.classList.remove("no-js");
+      document.documentElement.classList.add("js");
+    </script>
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="css/vendor.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <!-- Additional CSS for RTL support -->
+    <style>
+      /* RTL Support */
+      [dir="rtl"] .header-logo {
+        left: auto;
+        right: calc(var(--gutter) * 2);
+      }
+      
+      [dir="rtl"] .header-contact {
+        right: auto;
+        left: calc(var(--gutter) * 2);
+      }
+      
+      [dir="rtl"] .header-menu-toggle {
+        right: auto;
+        left: calc(var(--gutter) * 2 - var(--vspace-0_125));
+      }
+      
+      [dir="rtl"] .intro-header__overline::before {
+        left: auto;
+        right: calc((var(--overline-hline) + var(--gutter)) * -1);
+      }
+      
+      [dir="rtl"] .intro-pic-primary {
+        left: auto;
+        right: calc(50% - var(--pic-primary-mleft));
+      }
+      
+      [dir="rtl"] .intro-block-content__social li {
+        margin-right: 0;
+        margin-left: var(--vspace-0_625);
+      }
+      
+      [dir="rtl"] .menu-block__cat-name::before {
+        left: auto;
+        right: 0;
+      }
+      
+      [dir="rtl"] .menu-list__item-desc {
+        padding-right: 0;
+        padding-left: calc(var(--gutter) * 2);
+      }
+      
+      [dir="rtl"] .menu-list__item-price {
+        padding-right: 0;
+        padding-left: 0.2rem;
+      }
+      
+      /* Language Switcher */
+      .language-switcher {
+        position: absolute;
+        top: 50%;
+        right: calc(var(--gutter) * 2 + 180px);
+        transform: translateY(-50%);
+        z-index: 102;
+      }
+      
+      [dir="rtl"] .language-switcher {
+        right: auto;
+        left: calc(var(--gutter) * 2 + 180px);
+      }
+      
+      .language-switcher button {
+        background: var(--color-bg-accent);
+        color: var(--color-white);
+        border: 1px solid var(--color-bg-accent);
+        padding: 0.5rem 1rem;
+        border-radius: var(--radius-full);
+        font-size: var(--text-sm);
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s var(--ease-smooth-in-out);
+        margin: 0;
+      }
+      
+      .language-switcher button:hover {
+        background: var(--color-bg-accent-light);
+        border-color: var(--color-bg-accent-light);
+      }
+      
+      @media screen and (max-width: 900px) {
+        .language-switcher {
+          position: static;
+          transform: none;
+          margin-bottom: var(--vspace-1);
+          text-align: center;
+        }
+        
+        [dir="rtl"] .language-switcher {
+          text-align: center;
+        }
+      }
+    </style>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="manifest" href="site.webmanifest" />
+  </head>
+
+  <body id="top">
+    <!-- preloader
+    ================================================== -->
+    <div id="preloader">
+      <div id="loader" class="dots-fade">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+
+    <!-- page wrap
+    ================================================== -->
+    <div id="page" class="s-pagewrap ss-home">
+      <!-- # site header 
+        ================================================== -->
+      <header class="s-header">
+        <div class="container s-header__content">
+          <div class="s-header__block">
+            <div class="header-logo">
+              <a class="logo" href="index.html">
+                <img src="images/awtar.icon.png" alt="Homepage" />
+              </a>
+            </div>
+            <a class="header-menu-toggle" href="#0"><span data-translate="menu">القائمة</span></a>
+          </div>
+          <!-- end s-header__block -->
+
+          <!-- Language Switcher -->
+          <div class="language-switcher">
+            <button onclick="switchLanguage()" id="langBtn">עברית</button>
+          </div>
+
+          <nav class="header-nav">
+            <ul class="header-nav__links">
+              <li class="current">
+                <a class="smoothscroll" href="#intro" data-translate="nav_intro">مقدمة</a>
+              </li>
+              <li><a class="smoothscroll" href="#about" data-translate="nav_about">حولنا</a></li>
+              <li><a class="smoothscroll" href="#menu" data-translate="nav_menu">القائمة</a></li>
+              <li><a class="smoothscroll" href="#gallery" data-translate="nav_gallery">المعرض</a></li>
+            </ul>
+            <!-- end header-nav__links -->
+
+            <div class="header-contact">
+              <a href="tel:+" class="header-contact__num btn">
+                <svg
+                  id="Layer_1"
+                  data-name="Layer 1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  width="24"
+                  height="24"
+                  color="#000000"
+                >
+                  <defs>
+                    <style>
+                      .cls-6376396cc3a86d32eae6f0dc-1 {
+                        fill: none;
+                        stroke: currentColor;
+                        stroke-miterlimit: 10;
+                      }
+                    </style>
+                  </defs>
+                  <path
+                    class="cls-6376396cc3a86d32eae6f0dc-1"
+                    d="M19.64,21.25c-2.54,2.55-8.38.83-13-3.84S.2,6.9,2.75,4.36L5.53,1.57,10.9,6.94l-2,2A2.18,2.18,0,0,0,8.9,12L12,15.1a2.18,2.18,0,0,0,3.07,0l2-2,5.37,5.37Z"
+                  ></path>
+                </svg>
+                052-660-0758
+              </a>
+            </div>
+            <!-- end header-contact -->
+          </nav>
+          <!-- end header-nav -->
+        </div>
+        <!-- end s-header__content -->
+      </header>
+      <!-- end s-header -->
+
+      <!-- # intro
+        ================================================== -->
+      <section id="intro" class="container s-intro target-section">
+        <div class="grid-block s-intro__content">
+          <div class="intro-header">
+            <div class="intro-header__overline" data-translate="welcome">أهلاً وسهلاً</div>
+            <h1 class="intro-header__big-type">أوتار <br /></h1>
+            <h4 data-translate="cafe_restaurant">مقهى ومطعم</h4>
+          </div>
+          <!-- end intro-header -->
+
+          <figure class="intro-pic-primary">
+            <img
+              src="images/intro-pic-primary.jpg"
+              srcset="
+                images/intro-pic-primary.jpg    1x,
+                images/intro-pic-primary@2x.jpg 2x
+              "
+              alt=""
+            />
+          </figure>
+          <!-- end intro-pic-primary -->
+
+          <div class="intro-block-content">
+            <figure class="intro-block-content__pic">
+              <img
+                src="images/awtar-rest.png"
+                srcset="
+                  images/awtar-rest.png    1x,
+                  images/awtar-rest.png 2x
+                "
+                alt=""
+              />
+            </figure>
+            <!-- end intro-pic-secondary -->
+
+            <div class="intro-block-content__text-wrap">
+              <p class="intro-block-content__text" data-translate="intro_text">
+"انغمس في عالم من النكهات الفريدة والمذاقات التي تأسر الحواس، حيث نقدم لك أطباقاً مُحضّرة بعناية وشغف، مستوحاة من تقاليد الطهي العريقة ولمسة عصرية تُرضي كل الأذواق."              </p>
+
+              <ul class="intro-block-content__social">
+                <li><a href="#0">FB</a></li>
+                <li><a href="#0">IG</a></li>
+                <li><a href="#0">PI</a></li>
+                <li><a href="#0">X</a></li>
+              </ul>
+            </div>
+            <!-- end intro-block-content__social -->
+          </div>
+          <!-- end intro-block-content -->
+
+          <div class="intro-scroll">
+            <a class="smoothscroll" href="#about">
+              <span class="intro-scroll__circle-text"></span>
+              <span class="intro-scroll__text u-screen-reader-text" data-translate="scroll_down">تمرير لأسفل</span>
+              <div class="intro-scroll__icon">
+                <svg
+                  clip-rule="evenodd"
+                  fill-rule="evenodd"
+                  stroke-linejoin="round"
+                  stroke-miterlimit="2"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="m5.214 14.522s4.505 4.502 6.259 6.255c.146.147.338.22.53.22s.384-.073.53-.22c1.754-1.752 6.249-6.244 6.249-6.244.144-.144.216-.334.217-.523 0-.193-.074-.386-.221-.534-.293-.293-.766-.294-1.057-.004l-4.968 4.968v-14.692c0-.414-.336-.75-.75-.75s-.75.336-.75.75v14.692l-4.979-4.978c-.289-.289-.761-.287-1.054.006-.148.148-.222.341-.221.534 0 .189.071.377.215.52z"
+                    fill-rule="nonzero"
+                  />
+                </svg>
+              </div>
+            </a>
+          </div>
+          <!-- end intro-scroll -->
+        </div>
+        <!-- grid-block -->
+      </section>
+      <!-- end s-intro -->
+
+      <!-- # about
+        ================================================== -->
+      <section id="about" class="container s-about target-section">
+        <div class="row s-about__content">
+          <div class="column xl-4 lg-5 md-12 s-about__content-start">
+            <div class="section-header" data-num="01">
+              <h2 class="text-display-title" data-translate="our_story">قصتنا</h2>
+            </div>
+
+            <figure class="about-pic-primary">
+              <img
+                src="images/about-pic-primary.jpg"
+                srcset="
+                  images/about-pic-primary.jpg    1x,
+                  images/about-pic-primary@2x.jpg 2x
+                "
+                alt=""
+              />
+            </figure>
+          </div>
+          <!-- end s-about__content-start -->
+
+          <div class="column xl-6 lg-6 md-12 s-about__content-end">
+            <div data-translate="about_content">
+              <p>
+                نحن في مطعم أوتار نؤمن بأن الطعام الجيد يجمع الناس. منذ تأسيسنا، كان هدفنا هو تقديم تجربة طعام لا تُنسى تجمع بين النكهات الأصيلة والضيافة الدافئة.
+              </p>
+
+              <p>
+                يقع مطعمنا في قلب المدينة، ونحن نفخر بتقديم أطباق محضّرة بعناية من أفضل المكونات المحلية والطازجة. فريقنا من الطهاة المهرة يعمل بشغف لإبداع نكهات تأسر حواسكم.
+              </p>
+
+              <p>
+                سواء كنتم تبحثون عن وجبة سريعة أم عشاء رومانسي، فإن أجواء مطعمنا الأنيقة والودودة تجعل كل زيارة مميزة. نحن نسعى دائماً لتجاوز توقعاتكم وجعل كل لحظة تقضونها معنا لا تُنسى.
+              </p>
+
+              <p>
+                تعالوا واكتشفوا قصة النكهات في مطعم أوتار، حيث كل طبق يحكي حكاية من التقاليد والإبداع الطهي.
+              </p>
+
+              <p>
+                ندعوكم لتكونوا جزءاً من عائلة أوتار، حيث الطعم الأصيل والضيافة الحقيقية.
+              </p>
+            </div>
+          </div>
+          <!--end column -->
+        </div>
+        <!-- end s-about__content-end -->
+      </section>
+      <!-- end s-about -->
+
+      <!-- # menu
+        ================================================== -->
+      <section id="menu" class="container s-menu target-section">
+        <div class="row s-menu__content">
+          <div class="column xl-4 lg-5 md-12 s-menu__content-start">
+            <div class="section-header" data-num="02">
+              <h2 class="text-display-title" data-translate="our_menu">قائمتنا</h2>
+            </div>
+
+            <nav class="tab-nav">
+              <ul class="tab-nav__list">
+                <li>
+                  <a href="tab-signature-blends">
+                    <span data-translate="signature_blends">الخلطات المميزة</span>
+                    <svg
+                      clip-rule="evenodd"
+                      fill-rule="evenodd"
+                      stroke-linejoin="round"
+                      stroke-miterlimit="2"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="m14.523 18.787s4.501-4.505 6.255-6.26c.146-.146.219-.338.219-.53s-.073-.383-.219-.53c-1.753-1.754-6.255-6.258-6.255-6.258-.144-.145-.334-.217-.524-.217-.193 0-.385.074-.532.221-.293.292-.295.766-.004 1.056l4.978 4.978h-14.692c-.414 0-.75.336-.75.75s.336.75.75.75h14.692l-4.979 4.979c-.289.289-.286.762.006 1.054.148.148.341.222.533.222.19 0 .378-.072.522-.215z"
+                        fill-rule="nonzero"
+                      />
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a href="#tab-pastries">
+                    <span data-translate="fresh_pastries">المعجنات الطازجة</span>
+                    <svg
+                      clip-rule="evenodd"
+                      fill-rule="evenodd"
+                      stroke-linejoin="round"
+                      stroke-miterlimit="2"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="m14.523 18.787s4.501-4.505 6.255-6.26c.146-.146.219-.338.219-.53s-.073-.383-.219-.53c-1.753-1.754-6.255-6.258-6.255-6.258-.144-.145-.334-.217-.524-.217-.193 0-.385.074-.532.221-.293.292-.295.766-.004 1.056l4.978 4.978h-14.692c-.414 0-.75.336-.75.75s.336.75.75.75h14.692l-4.979 4.979c-.289.289-.286.762.006 1.054.148.148.341.222.533.222.19 0 .378-.072.522-.215z"
+                        fill-rule="nonzero"
+                      />
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a href="#tab-gourmet-treats">
+                    <span data-translate="gourmet_treats">الحلويات الفاخرة</span>
+                    <svg
+                      clip-rule="evenodd"
+                      fill-rule="evenodd"
+                      stroke-linejoin="round"
+                      stroke-miterlimit="2"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="m14.523 18.787s4.501-4.505 6.255-6.26c.146-.146.219-.338.219-.53s-.073-.383-.219-.53c-1.753-1.754-6.255-6.258-6.255-6.258-.144-.145-.334-.217-.524-.217-.193 0-.385.074-.532.221-.293.292-.295.766-.004 1.056l4.978 4.978h-14.692c-.414 0-.75.336-.75.75s.336.75.75.75h14.692l-4.979 4.979c-.289.289-.286.762.006 1.054.148.148.341.222.533.222.19 0 .378-.072.522-.215z"
+                        fill-rule="nonzero"
+                      />
+                    </svg>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+            <!-- end tab-nav -->
+          </div>
+          <!-- end s-menu__content-start -->
+
+          <div class="column xl-6 lg-6 md-12 s-menu__content-end">
+            <div class="tab-content menu-block">
+              <div
+                id="tab-signature-blends"
+                class="menu-block__group tab-content__item"
+              >
+                <h6 class="menu-block__cat-name" data-translate="signature_blends">الخلطات المميزة</h6>
+
+                <ul class="menu-list" id="signature-menu">
+                  <li class="menu-list__item">
+                    <div class="menu-list__item-desc">
+                      <h4 data-translate="lounge_espresso">إسبريسو صالة الأناقة</h4>
+                      <p data-translate="lounge_espresso_desc">
+                        غني وكامل القوام، خلطة الإسبريسو المميزة لدينا بنكهات الشوكولاتة الداكنة والمكسرات المحمصة.
+                      </p>
+                    </div>
+                    <div class="menu-list__item-price"><span>₪</span>14</div>
+                  </li>
+                  <li class="menu-list__item">
+                    <div class="menu-list__item-desc">
+                      <h4 data-translate="velvet_mocha">موكا المخملية المبهجة</h4>
+                      <p data-translate="velvet_mocha_desc">
+                        موكا حريرية منقوعة بلمسة من الفانيليا، متوجة بكريمة مخفوقة مخملية.
+                      </p>
+                    </div>
+                    <div class="menu-list__item-price"><span>₪</span>17</div>
+                  </li>
+                  <li class="menu-list__item">
+                    <div class="menu-list__item-desc">
+                      <h4 data-translate="caramel_macchiato">سيمفونية المكياتو بالكراميل</h4>
+                      <p data-translate="caramel_macchiato_desc">
+                        مزيج متناغم من الإسبريسو والحليب المبخر ورذاذ الكراميل.
+                      </p>
+                    </div>
+                    <div class="menu-list__item-price"><span>₪</span>16</div>
+                  </li>
+                  <li class="menu-list__item">
+                    <div class="menu-list__item-desc">
+                      <h4 data-translate="hazelnut_latte">لاتيه الجنة بالبندق</h4>
+                      <p data-translate="hazelnut_latte_desc">
+                        لاتيه كريمية بطعم البندق اللذيذ من شراب البندق.
+                      </p>
+                    </div>
+                    <div class="menu-list__item-price"><span>₪</span>18</div>
+                  </li>
+                  <li class="menu-list__item">
+                    <div class="menu-list__item-desc">
+                      <h4 data-translate="french_cappuccino">كابتشينو الفانيليا الفرنسية</h4>
+                      <p data-translate="french_cappuccino_desc">
+                        كابتشينو كلاسيكي بلمسة من حلاوة الفانيليا الفرنسية.
+                      </p>
+                    </div>
+                    <div class="menu-list__item-price"><span>₪</span>17</div>
+                  </li>
+                </ul>
+                <!-- end menu-list -->
+              </div>
+              <!-- end tab-content__item -->
+
+              <div
+                id="tab-pastries"
+                class="menu-block__group tab-content__item"
+              >
+                <h6 class="menu-block__cat-name" data-translate="fresh_pastries">المعجنات الطازجة</h6>
+
+                <ul class="menu-list">
+                  <li class="menu-list__item">
+                    <div class="menu-list__item-desc">
+                      <h4 data-translate="buttery_croissants">كرواسون بالزبدة</h4>
+                      <p data-translate="buttery_croissants_desc">كرواسون مقرمش وزبداني مخبوز بإتقان.</p>
+                    </div>
+                    <div class="menu-list__item-price"><span>₪</span>10</div>
+                  </li>
+                  <li class="menu-list__item">
+                    <div class="menu-list__item-desc">
+                      <h4 data-translate="almond_danish">دانيش اللوز المقرمش</h4>
+                      <p data-translate="almond_danish_desc">
+                        معجنات رقيقة محشوة بعجينة اللوز وشرائح اللوز.
+                      </p>
+                    </div>
+                    <div class="menu-list__item-price"><span>₪</span>12</div>
+                  </li>
+                  <li class="menu-list__item">
+                    <div class="menu-list__item-desc">
+                      <h4 data-translate="blueberry_muffins">مافينز التوت الأزرق</h4>
+                      <p data-translate="blueberry_muffins_desc">
+                        مافينز رطبة مليئة بالتوت الأزرق وقمة مقرمشة.
+                      </p>
+                    </div>
+                    <div class="menu-list__item-price"><span>₪</span>11</div>
+                  </li>
+                  <li class="menu-list__item">
+                    <div class="menu-list__item-desc">
+                      <h4 data-translate="chocolate_scones">سكونز بحشوة الشوكولاتة</h4>
+                      <p data-translate="chocolate_scones_desc">سكونز طرية مع مفاجأة مركز الشوكولاتة.</p>
+                    </div>
+                    <div class="menu-list__item-price"><span>₪</span>13</div>
+                  </li>
+                  <li class="menu-list__item">
+                    <div class="menu-list__item-desc">
+                      <h4 data-translate="raspberry_danish">دانيش التوت مع الجبن الكريمي</h4>
+                      <p data-translate="raspberry_danish_desc">
+                        حشوة التوت الحلوة والحامضة في دانيش الجبن الكريمي.
+                      </p>
+                    </div>
+                    <div class="menu-list__item-price"><span>₪</span>13</div>
+                  </li>
+                </ul>
+                <!-- end menu-list -->
+              </div>
+              <!-- end tab-content__item -->
+
+              <div
+                id="tab-gourmet-treats"
+                class="menu-block__group tab-content__item"
+              >
+                <h6 class="menu-block__cat-name" data-translate="gourmet_treats">الحلويات الفاخرة</h6>
+
+                <ul class="menu-list">
+                  <li class="menu-list__item">
+                    <div class="menu-list__item-desc">
+                      <h4 data-translate="dark_chocolate_truffles">ترافل الشوكولاتة الداكنة الحرفية</h4>
+                      <p data-translate="dark_chocolate_truffles_desc">
+                        ترافل شوكولاتة داكنة فاخرة مغطاة بمسحوق الكاكاو.
+                      </p>
+                    </div>
+                    <div class="menu-list__item-price"><span>₪</span>11</div>
+                  </li>
+                  <li class="menu-list__item">
+                    <div class="menu-list__item-desc">
+                      <h4 data-translate="praline_bonbons">بون بون البراليني المصنوع يدوياً</h4>
+                      <p data-translate="praline_bonbons_desc">
+                        بون بون محشو بالبراليني ومعلوه بمكسرات الكراميل.
+                      </p>
+                    </div>
+                    <div class="menu-list__item-price"><span>₪</span>12</div>
+                  </li>
+                  <li class="menu-list__item">
+                    <div class="menu-list__item-desc">
+                      <h4 data-translate="pistachio_toffee">توفي الفستق وملح البحر</h4>
+                      <p data-translate="pistachio_toffee_desc">توفي مقرمش مغطى بالفستق وملح البحر.</p>
+                    </div>
+                    <div class="menu-list__item-price"><span>₪</span>16</div>
+                  </li>
+                  <li class="menu-list__item">
+                    <div class="menu-list__item-desc">
+                      <h4 data-translate="raspberry_bark">لوح الشوكولاتة البيضاء بالتوت</h4>
+                      <p data-translate="raspberry_bark_desc">
+                        شوكولاتة بيضاء كريمية مع دوامات التوت ورش اللوز.
+                      </p>
+                    </div>
+                    <div class="menu-list__item-price"><span>₪</span>14</div>
+                  </li>
+                  <li class="menu-list__item">
+                    <div class="menu-list__item-desc">
+                      <h4 data-translate="caramel_brownie">قطع البراوني المالحة بالكراميل</h4>
+                      <p data-translate="caramel_brownie_desc">
+                        قطع براوني مطاطية برذاذ الكراميل ولمسة من ملح البحر.
+                      </p>
+                    </div>
+                    <div class="menu-list__item-price"><span>₪</span>10</div>
+                  </li>
+                </ul>
+                <!-- end menu-list -->
+              </div>
+              <!-- end tab-content__item -->
+            </div>
+            <!-- menu-block -->
+          </div>
+          <!-- end s-menu__content-end -->
+        </div>
+        <!-- end s-menu__content -->
+      </section>
+      <!-- end s-menu -->
+
+
+      <!-- # testimonials
+        ================================================== -->
+      <section id="testimonials" class="container s-testimonials">
+        <div class="row s-testimonials__content">
+          <div class="column xl-12">
+            <h3 class="testimonials-title u-text-center" data-translate="testimonials_title">
+              ما يقوله عملاؤنا
+            </h3>
+
+            <div class="swiper-container testimonials-slider">
+              <div class="swiper-wrapper">
+                <div class="testimonials-slider__slide swiper-slide">
+                  <div class="testimonials-slider__author">
+                    <img
+                      src="images/avatars/user-02.jpg"
+                      alt="Author image"
+                      class="testimonials-slider__avatar"
+                    />
+                    <cite class="testimonials-slider__cite">
+                      أحمد محمود
+                      <span>تل أبيب، إسرائيل</span>
+                    </cite>
+                  </div>
+                  <p data-translate="testimonial_1">
+                    تجربة رائعة في مطعم أوتار! الطعام لذيذ والخدمة ممتازة. أنصح الجميع بزيارة هذا المكان الجميل.
+                  </p>
+                </div>
+
+                <div class="testimonials-slider__slide swiper-slide">
+                  <div class="testimonials-slider__author">
+                    <img
+                      src="images/avatars/user-08.jpg"
+                      alt="Author image"
+                      class="testimonials-slider__avatar"
+                    />
+                    <cite class="testimonials-slider__cite">
+                      فاطمة سيلاني
+                      <span>القدس، إسرائيل</span>
+                    </cite>
+                  </div>
+                  <p data-translate="testimonial_2">
+                    مكان مثالي للاستمتاع بوجبة لذيذة مع الأصدقاء والعائلة. الجو مريح والطعام طازج ولذيذ.
+                  </p>
+                </div>
+
+                <div class="testimonials-slider__slide swiper-slide">
+                  <div class="testimonials-slider__author">
+                    <img
+                      src="images/avatars/user-01.jpg"
+                      alt="Author image"
+                      class="testimonials-slider__avatar"
+                    />
+                    <cite class="testimonials-slider__cite">
+                      محمد عبدالله
+                      <span>حيفا، إسرائيل</span>
+                    </cite>
+                  </div>
+                  <p data-translate="testimonial_3">
+                    قهوة ممتازة وحلويات شهية! لا أستطيع مقاومة زيارة أوتار كلما كنت في المنطقة.
+                  </p>
+                </div>
+
+                <div class="testimonials-slider__slide swiper-slide">
+                  <div class="testimonials-slider__author">
+                    <img
+                      src="images/avatars/user-08.jpg"
+                      alt="Author image"
+                      class="testimonials-slider__avatar"
+                    />
+                    <cite class="testimonials-slider__cite">
+                      سارة يوسف
+                      <span>يافا، إسرائيل</span>
+                    </cite>
+                  </div>
+                  <p data-translate="testimonial_4">
+                    أجواء دافئة وطعام أصيل. مطعم أوتار أصبح مكاني المفضل لتناول الإفطار في نهاية الأسبوع.
+                  </p>
+                </div>
+              </div>
+              <!-- end swiper-wrapper -->
+
+              <div class="swiper-pagination"></div>
+            </div>
+            <!-- end testimonials-slider -->
+          </div>
+          <!-- end column -->
+        </div>
+        <!-- end s-testimonials__content -->
+      </section>
+      <!-- end s-testimonials -->
+
+      <!-- # footer 
+        ================================================== -->
+      <footer id="footer" class="container s-footer">
+        <!-- end s-footer__top -->
+
+        <div class="row s-footer__main">
+          <div class="column xl-3 lg-12 footer-block s-footer__main-start">
+            <div class="s-footer__logo">
+              <a class="logo" href="index.html">
+                <img src="images/awtar.icon.png" alt="Homepage" />
+              </a>
+            </div>
+
+            <ul class="s-footer__social social-list">
+              <li>
+                <a href="https://www.facebook.com/AwtarRestaurantCafe/">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    style="fill: rgba(0, 0, 0, 1); transform: ; -ms-filter: "
+                  >
+                    <path
+                      d="M20,3H4C3.447,3,3,3.448,3,4v16c0,0.552,0.447,1,1,1h8.615v-6.96h-2.338v-2.725h2.338v-2c0-2.325,1.42-3.592,3.5-3.592 c0.699-0.002,1.399,0.034,2.095,0.107v2.42h-1.435c-1.128,0-1.348,0.538-1.348,1.325v1.735h2.697l-0.35,2.725h-2.348V21H20 c0.553,0,1-0.448,1-1V4C21,3.448,20.553,3,20,3z"
+                    ></path>
+                  </svg>
+                  <span class="u-screen-reader-text">Facebook</span>
+                </a>
+              </li>
+           
+              <li>
+                <a href="https://www.instagram.com/awtarcafe21">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    style="fill: rgba(0, 0, 0, 1); transform: ; -ms-filter: "
+                  >
+                    <path
+                      d="M11.999,7.377c-2.554,0-4.623,2.07-4.623,4.623c0,2.554,2.069,4.624,4.623,4.624c2.552,0,4.623-2.07,4.623-4.624 C16.622,9.447,14.551,7.377,11.999,7.377L11.999,7.377z M11.999,15.004c-1.659,0-3.004-1.345-3.004-3.003 c0-1.659,1.345-3.003,3.004-3.003s3.002,1.344,3.002,3.003C15.001,13.659,13.658,15.004,11.999,15.004L11.999,15.004z"
+                    ></path>
+                    <circle cx="16.806" cy="7.207" r="1.078"></circle>
+                    <path
+                      d="M20.533,6.111c-0.469-1.209-1.424-2.165-2.633-2.632c-0.699-0.263-1.438-0.404-2.186-0.42 c-0.963-0.042-1.268-0.054-3.71-0.054s-2.755,0-3.71,0.054C7.548,3.074,6.809,3.215,6.11,3.479C4.9,3.946,3.945,4.902,3.477,6.111 c-0.263,0.7-0.404,1.438-0.419,2.186c-0.043,0.962-0.056,1.267-0.056,3.71c0,2.442,0,2.753,0.056,3.71 c0.015,0.748,0.156,1.486,0.419,2.187c0.469,1.208,1.424,2.164,2.634,2.632c0.696,0.272,1.435,0.426,2.185,0.45 c0.963,0.042,1.268,0.055,3.71,0.055s2.755,0,3.71-0.055c0.747-0.015,1.486-0.157,2.186-0.419c1.209-0.469,2.164-1.424,2.633-2.633 c0.263-0.7,0.404-1.438,0.419-2.186c0.043-0.962,0.056-1.267,0.056-3.71s0-2.753-0.056-3.71C20.941,7.57,20.801,6.819,20.533,6.111z M19.315,15.643c-0.007,0.576-0.111,1.147-0.311,1.688c-0.305,0.787-0.926,1.409-1.712,1.711c-0.535,0.199-1.099,0.303-1.67,0.311 c-0.95,0.044-1.218,0.055-3.654,0.055c-2.438,0-2.687,0-3.655-0.055c-0.569-0.007-1.135-0.112-1.669-0.311 c-0.789-0.301-1.414-0.923-1.719-1.711c-0.196-0.534-0.302-1.099-0.311-1.669c-0.043-0.95-0.053-1.218-0.053-3.654 c0-2.437,0-2.686,0.053-3.655c0.007-0.576,0.111-1.146,0.311-1.687c0.305-0.789,0.93-1.41,1.719-1.712 c0.534-0.198,1.1-0.303,1.669-0.311c0.951-0.043,1.218-0.055,3.655-0.055c2.437,0,2.687,0,3.654,0.055 c0.571,0.007,1.135,0.112,1.67,0.311c0.786,0.303,1.407,0.925,1.712,1.712c0.196,0.534,0.302,1.099,0.311,1.669 c0.043,0.951,0.054,1.218,0.054,3.655c0,2.436,0,2.698-0.043,3.654H19.315z"
+                    ></path>
+                  </svg>
+                  <span class="u-screen-reader-text">Instagram</span>
+                </a>
+              </li>
+
+            </ul>
+            <!--end s-footer__social -->
+          </div>
+          <!-- end s-footer__main-start -->
+
+          <div
+            class="column xl-9 lg-12 s-footer__main-end grid-cols grid-cols--wrap"
+          >
+            <div class="grid-cols__column footer-block">
+              <h6 data-translate="location">الموقع</h6>
+              <p data-translate="address">
+               📍بجانب قاعة الكانتري-كفر قاسم
+              </p>
+            </div>
+
+            <div class="grid-cols__column footer-block">
+              <h6 data-translate="contacts">اتصل بنا</h6>
+              <ul class="link-list">
+                <li><a href="mailto:#0">Awtarcafe21@gmail.com</a></li>
+                <li><a href="tel:+972526600758">(+972) 52-660-0758</a></li>
+              </ul>
+            </div>
+
+            <div class="grid-cols__column footer-block">
+              <h6 data-translate="hours">ساعات العمل</h6>
+              <ul class="opening-hours">
+                <li>
+                  <span class="opening-hours__days" data-translate="weekdays">أيام الأسبوع</span>
+                  <span class="opening-hours__time" data-translate="weekdays_hours">23:00 صباحاً - 10:00 مساءً</span>
+                </li>
+                <li>
+                  <span class="opening-hours__days" data-translate="weekends">عطلة نهاية الأسبوع</span>
+                  <span class="opening-hours__time" data-translate="weekends_hours">00:00 صباحاً - 16:00 مساءً</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- s-footer__main-end -->
+        </div>
+        <!-- end  s-footer__main-content -->
+
+        <div class="row s-footer__bottom">
+          <div class="column xl-6 lg-12">
+            <p class="ss-copyright">
+              <span data-translate="copyright">© أوتار 2025</span>
+              <span data-translate="design">
+                تصميم بواسطة
+                <a href="wa.link/gf3x4r">HodiCode</a>
+              </span>
+              
+            </p>
+          </div>
+        </div>
+        <!-- end s-footer__bottom -->
+
+        <div class="ss-go-top">
+          <a class="smoothscroll" title="Back to Top" href="#top">
+            <svg
+              clip-rule="evenodd"
+              fill-rule="evenodd"
+              stroke-linejoin="round"
+              stroke-miterlimit="2"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="m14.523 18.787s4.501-4.505 6.255-6.26c.146-.146.219-.338.219-.53s-.073-.383-.219-.53c-1.753-1.754-6.255-6.258-6.255-6.258-.144-.145-.334-.217-.524-.217-.193 0-.385.074-.532.221-.293.292-.295.766-.004 1.056l4.978 4.978h-14.692c-.414 0-.75.336-.75.75s.336.75.75.75h14.692l-4.979 4.979c-.289.289-.286.762.006 1.054.148.148.341.222.533.222.19 0 .378-.072.522-.215z"
+                fill-rule="nonzero"
+              />
+            </svg>
+          </a>
+          <span data-translate="back_to_top">العودة إلى الأعلى</span>
+        </div>
+        <!-- end ss-go-top -->
+      </footer>
+      <!-- end s-footer -->
+    </div>
+    <!-- end page-wrap -->
+
+    <!-- JavaScript for Language Switching
+    ================================================== -->
+    <script>
+      // Language Data
+      const translations = {
+        ar: {
+          // Navigation
+          menu: "القائمة",
+          nav_intro: "مقدمة",
+          nav_about: "حولنا", 
+          nav_menu: "القائمة",
+          nav_gallery: "المعرض",
+          
+          // Intro Section
+          welcome: "أهلاً وسهلاً",
+          cafe_restaurant: "مقهى ومطعم",
+          intro_text: "استمتع بلحظات من النعيم مع كل رشفة، حيث تحتضن قهوتنا المُحضّرة بخبرة وحلوياتنا الشهية حواسك.",
+          scroll_down: "تمرير لأسفل",
+          
+          // About Section
+          our_story: "قصتنا",
+          about_content: `
+            <p>نحن في مطعم أوتار نؤمن بأن الطعام الجيد يجمع الناس. منذ تأسيسنا، كان هدفنا هو تقديم تجربة طعام لا تُنسى تجمع بين النكهات الأصيلة والضيافة الدافئة.</p>
+            <p>يقع مطعمنا في قلب المدينة، ونحن نفخر بتقديم أطباق محضّرة بعناية من أفضل المكونات المحلية والطازجة. فريقنا من الطهاة المهرة يعمل بشغف لإبداع نكهات تأسر حواسكم.</p>
+            <p>سواء كنتم تبحثون عن وجبة سريعة أم عشاء رومانسي، فإن أجواء مطعمنا الأنيقة والودودة تجعل كل زيارة مميزة. نحن نسعى دائماً لتجاوز توقعاتكم وجعل كل لحظة تقضونها معنا لا تُنسى.</p>
+            <p>تعالوا واكتشفوا قصة النكهات في مطعم أوتار، حيث كل طبق يحكي حكاية من التقاليد والإبداع الطهي.</p>
+            <p>ندعوكم لتكونوا جزءاً من عائلة أوتار، حيث الطعم الأصيل والضيافة الحقيقية.</p>
+          `,
+          
+          // Menu Section
+          our_menu: "قائمتنا",
+          signature_blends: "الخلطات المميزة",
+          fresh_pastries: "المعجنات الطازجة",
+          gourmet_treats: "الحلويات الفاخرة",
+          
+          // Menu Items - Signature Blends
+          lounge_espresso: "إسبريسو صالة الأناقة",
+          lounge_espresso_desc: "غني وكامل القوام، خلطة الإسبريسو المميزة لدينا بنكهات الشوكولاتة الداكنة والمكسرات المحمصة.",
+          velvet_mocha: "موكا المخملية المبهجة",
+          velvet_mocha_desc: "موكا حريرية منقوعة بلمسة من الفانيليا، متوجة بكريمة مخفوقة مخملية.",
+          caramel_macchiato: "سيمفونية المكياتو بالكراميل",
+          caramel_macchiato_desc: "مزيج متناغم من الإسبريسو والحليب المبخر ورذاذ الكراميل.",
+          hazelnut_latte: "لاتيه الجنة بالبندق",
+          hazelnut_latte_desc: "لاتيه كريمية بطعم البندق اللذيذ من شراب البندق.",
+          french_cappuccino: "كابتشينو الفانيليا الفرنسية",
+          french_cappuccino_desc: "كابتشينو كلاسيكي بلمسة من حلاوة الفانيليا الفرنسية.",
+          
+          // Menu Items - Pastries
+          buttery_croissants: "كرواسون بالزبدة",
+          buttery_croissants_desc: "كرواسون مقرمش وزبداني مخبوز بإتقان.",
+          almond_danish: "دانيش اللوز المقرمش",
+          almond_danish_desc: "معجنات رقيقة محشوة بعجينة اللوز وشرائح اللوز.",
+          blueberry_muffins: "مافينز التوت الأزرق",
+          blueberry_muffins_desc: "مافينز رطبة مليئة بالتوت الأزرق وقمة مقرمشة.",
+          chocolate_scones: "سكونز بحشوة الشوكولاتة",
+          chocolate_scones_desc: "سكونز طرية مع مفاجأة مركز الشوكولاتة.",
+          raspberry_danish: "دانيش التوت مع الجبن الكريمي",
+          raspberry_danish_desc: "حشوة التوت الحلوة والحامضة في دانيش الجبن الكريمي.",
+          
+          // Menu Items - Treats
+          dark_chocolate_truffles: "ترافل الشوكولاتة الداكنة الحرفية",
+          dark_chocolate_truffles_desc: "ترافل شوكولاتة داكنة فاخرة مغطاة بمسحوق الكاكاو.",
+          praline_bonbons: "بون بون البراليني المصنوع يدوياً",
+          praline_bonbons_desc: "بون بون محشو بالبراليني ومعلوه بمكسرات الكراميل.",
+          pistachio_toffee: "توفي الفستق وملح البحر",
+          pistachio_toffee_desc: "توفي مقرمش مغطى بالفستق وملح البحر.",
+          raspberry_bark: "لوح الشوكولاتة البيضاء بالتوت",
+          raspberry_bark_desc: "شوكولاتة بيضاء كريمية مع دوامات التوت ورش اللوز.",
+          caramel_brownie: "قطع البراوني المالحة بالكراميل",
+          caramel_brownie_desc: "قطع براوني مطاطية برذاذ الكراميل ولمسة من ملح البحر.",
+          
+          // Gallery
+          gallery: "المعرض",
+          
+          // Testimonials
+          testimonials_title: "ما يقوله عملاؤنا",
+          testimonial_1: "تجربة رائعة في مطعم أوتار! الطعام لذيذ والخدمة ممتازة. أنصح الجميع بزيارة هذا المكان الجميل.",
+          testimonial_2: "مكان مثالي للاستمتاع بوجبة لذيذة مع الأصدقاء والعائلة. الجو مريح والطعام طازج ولذيذ.",
+          testimonial_3: "قهوة ممتازة وحلويات شهية! لا أستطيع مقاومة زيارة أوتار كلما كنت في المنطقة.",
+          testimonial_4: "أجواء دافئة وطعام أصيل. مطعم أوتار أصبح مكاني المفضل لتناول الإفطار في نهاية الأسبوع.",
+          
+          // Footer
+          newsletter_title: "اشترك في قائمتنا البريدية للحصول على<br />التحديثات والأخبار والعروض الحصرية.",
+          email_placeholder: "عنوان بريدك الإلكتروني",
+          subscribe: "اشتراك",
+          location: "الموقع",
+          address: "شارع الكرمة 456، تل أبيب<br />إسرائيل 69000",
+          contacts: "اتصل بنا",
+          hours: "ساعات العمل",
+          weekdays: "أيام الأسبوع",
+          weekdays_hours: "10:00 صباحاً - 9:00 مساءً",
+          weekends: "عطلة نهاية الأسبوع", 
+          weekends_hours: "9:00 صباحاً - 10:00 مساءً",
+          copyright: "© أوتار 2025",
+          design: "تصميم بواسطة <a href='https://styleshout.com/'>StyleShout</a>",
+          distributed: "موزعة بواسطة <a href='https://themewagon.com' target='_blank'>ThemeWagon</a>",
+          back_to_top: "العودة إلى الأعلى"
+        },
+        
+        he: {
+          // Navigation
+          menu: "תפריט",
+          nav_intro: "מבוא",
+          nav_about: "אודות",
+          nav_menu: "תפריט",
+          nav_gallery: "גלריה",
+          
+          // Intro Section
+          welcome: "ברוכים הבאים",
+          cafe_restaurant: "בית קפה ומסעדה",
+          intro_text: "תהנו מרגעים של אושר עם כל לגימה, כשהקפה המיוצר במומחיות שלנו והמאפים הטעימים שלנו מקיפים את החושים שלכם.",
+          scroll_down: "גלילה למטה",
+          
+          // About Section
+          our_story: "הסיפור שלנו",
+          about_content: `
+            <p>אנו במסעדת אוטאר מאמינים שאוכל טוב מחבר בין אנשים. מאז הקמתנו, המטרה שלנו הייתה לספק חווית אוכל בלתי נשכחת המשלבת טעמים אותנטיים ואירוח חם.</p>
+            <p>המסעדה שלנו ממוקמת בלב העיר, ואנו גאים להגיש מנות שהוכנו בקפידה מהמרכיבים המקומיים והטריים הטובים ביותר. צוות השפים המיומנים שלנו עובד בתשוקה ליצור טעמים הכובשים את החושים שלכם.</p>
+            <p>בין אם אתם מחפשים ארוחה מהירה או ארוחת ערב רומנטית, האווירה האלגנטית והידידותית של המסעדה שלנו הופכת כל ביקור למיוחד. אנו תמיד שואפים לעבור על הציפיות שלכם ולהפוך כל רגע שאתם מבלים איתנו לבלתי נשכח.</p>
+            <p>בואו לגלות את סיפור הטעמים במסעדת אוטאר, שבו כל מנה מספרת סיפור של מסורת ויצירתיות קולינרית.</p>
+            <p>אנו מזמינים אתכם להיות חלק ממשפחת אוטאר, שבה הטעם האותנטי והאירוח האמיתי.</p>
+          `,
+          
+          // Menu Section
+          our_menu: "התפריט שלנו",
+          signature_blends: "תערובות מיוחדות",
+          fresh_pastries: "מאפים טריים",
+          gourmet_treats: "פינוקים גורמה",
+          
+          // Menu Items - Signature Blends
+          lounge_espresso: "אספרסו סלון האלגנטיות",
+          lounge_espresso_desc: "עשיר ועם גוף מלא, תערובת האספרסו המיוחדת שלנו עם נגיעות של שוקולד כהה ואגוזים קלויים.",
+          velvet_mocha: "מוקה קטיפה מענגת",
+          velvet_mocha_desc: "מוקה משיי עם נגיעה של וניל, מוכתרת בקצפת מוכה קטיפתית.",
+          caramel_macchiato: "סימפוניית מקיאטו קרמל",
+          caramel_macchiato_desc: "תערובת הרמונית של אספרסו, חלב מוקצף וטפטוף קרמל.",
+          hazelnut_latte: "לאטה גן עדן לוז",
+          hazelnut_latte_desc: "לאטה קרמי עם טוב הלוז הטעים מסירופ לוז.",
+          french_cappuccino: "קפוצ'ינו וניל צרפתי",
+          french_cappuccino_desc: "קפוצ'ינו קלאסי עם נגיעה של מתיקות וניל צרפתית.",
+          
+          // Menu Items - Pastries
+          buttery_croissants: "קרואסונים חמאתיים",
+          buttery_croissants_desc: "קרואסונים פריכים וחמאתיים אפויים לשלמות.",
+          almond_danish: "דניש שקדים פריך",
+          almond_danish_desc: "מאפים עדינים במילוי משחת שקדים ופרוסות שקדים.",
+          blueberry_muffins: "מאפינס אוכמניות",
+          blueberry_muffins_desc: "מאפינס לחים מלאים באוכמניות וציפוי פירורי.",
+          chocolate_scones: "סקונס במילוי שוקולד",
+          chocolate_scones_desc: "סקונס רכים עם הפתעת מרכז שוקולד.",
+          raspberry_danish: "דניש פטל עם גבינת שמנת",
+          raspberry_danish_desc: "מילוי פטל מתוק וחמצמץ בדניש גבינת שמנت.",
+          
+          // Menu Items - Treats
+          dark_chocolate_truffles: "טרפלס שוקולד כהה אומנותי",
+          dark_chocolate_truffles_desc: "טרפלס שוקולד כהה מפואר מכוסה באבקת קקאו.",
+          praline_bonbons: "בון בון פרלינה בעבודת יד",
+          praline_bonbons_desc: "בון בון במילוי פרלינה ומעליו אגוז קרמל.",
+          pistachio_toffee: "טופי פיסטוקים ומלח ים",
+          pistachio_toffee_desc: "טופי פריך מכוסה פיסטוקים ומלח ים.",
+          raspberry_bark: "לוח שוקולד לבן פטל",
+          raspberry_bark_desc: "שוקולד לבן קרמי עם ספירלות פטל וניתוח שקדים.",
+          caramel_brownie: "חתיכות בראוני קרמל מלוח",
+          caramel_brownie_desc: "חתיכות בראוני גומיות עם טפטוף קרמל ונגיעה של מלח ים.",
+          
+          // Gallery
+          gallery: "גלריה",
+          
+          // Testimonials
+          testimonials_title: "מה הלקוחות שלנו אומרים",
+          testimonial_1: "חוויה נהדרת במסעדת אוטאר! האוכל טעים והשירות מעולה. אני ממליץ לכולם לבקר במקום היפה הזה.",
+          testimonial_2: "מקום מושלם ליהנות מארוחה טעימה עם חברים ומשפחה. האווירה נוחה והאוכל טרי וטעים.",
+          testimonial_3: "קפה מעולה ומתוקים טעימים! אני לא יכול להתאפק מלבקר באוטאר כשאני באזור.",
+          testimonial_4: "אווירה חמה ואוכל אותנטי. מסעדת אוטאר הפכה למקום המועדף עלי לארוחת בוקר בסוף השבוע.",
+          
+          // Footer
+          newsletter_title: "הירשמו לרשימת התפוצה שלנו לקבלת<br />עדכונים, חדשות והצעות בלעדיות.",
+          email_placeholder: "כתובת האימייל שלכם",
+          subscribe: "הרשמה",
+          location: "מיקום",
+          address: "כפר קאסם, סמוך לאולמות קאנטרי",
+          contacts: "צרו קשר",
+          hours: "שעות פעילות",
+          weekdays: "ימי חול",
+          weekdays_hours: "23:00 בוקר - 9:00 ערב",
+          weekends: "סוף שבוע",
+          weekends_hours: "00:00 בוקר - 16:00 ערב",
+          copyright: "© אוטאר 2025",
+          design: "עוצב על ידי <a href='wa.link/gf3x4r'>HodiCode</a>",
+          distributed: "",
+          back_to_top: "חזרה למעלה"
+        }
+      };
+
+      let currentLanguage = 'ar';
+
+      function switchLanguage() {
+        const newLanguage = currentLanguage === 'ar' ? 'he' : 'ar';
+        const langBtn = document.getElementById('langBtn');
+        const htmlElement = document.documentElement;
+        
+        // Update current language
+        currentLanguage = newLanguage;
+        
+        // Update document attributes
+        htmlElement.setAttribute('lang', newLanguage);
+        htmlElement.setAttribute('dir', newLanguage === 'ar' ? 'rtl' : 'ltr');
+        
+        // Update button text
+        langBtn.textContent = newLanguage === 'ar' ? 'עברית' : 'عربي';
+        
+        // Update page title
+        document.title = newLanguage === 'ar' ? 'مطعم أوتار' : 'מסעדת אוטאר';
+        
+        // Update all translated elements
+        const elementsWithTranslate = document.querySelectorAll('[data-translate]');
+        elementsWithTranslate.forEach(element => {
+          const key = element.getAttribute('data-translate');
+          if (translations[newLanguage][key]) {
+            if (key === 'about_content') {
+              element.innerHTML = translations[newLanguage][key];
+            } else {
+              element.textContent = translations[newLanguage][key];
+            }
+          }
+        });
+        
+        // Update placeholders
+        const elementsWithPlaceholder = document.querySelectorAll('[data-translate-placeholder]');
+        elementsWithPlaceholder.forEach(element => {
+          const key = element.getAttribute('data-translate-placeholder');
+          if (translations[newLanguage][key]) {
+            element.setAttribute('placeholder', translations[newLanguage][key]);
+          }
+        });
+        
+        // Update input values
+        const elementsWithValue = document.querySelectorAll('[data-translate-value]');
+        elementsWithValue.forEach(element => {
+          const key = element.getAttribute('data-translate-value');
+          if (translations[newLanguage][key]) {
+            element.setAttribute('value', translations[newLanguage][key]);
+          }
+        });
+
+        // Store language preference
+        localStorage.setItem('preferredLanguage', newLanguage);
+      }
+
+      // Initialize page with saved language preference
+      function initializeLanguage() {
+        const savedLanguage = localStorage.getItem('preferredLanguage');
+        if (savedLanguage && savedLanguage !== currentLanguage) {
+          switchLanguage();
+        }
+      }
+
+      // Initialize when page loads
+      document.addEventListener('DOMContentLoaded', initializeLanguage);
+    </script>
+
+    <!-- Java Script
+    ================================================== -->
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
