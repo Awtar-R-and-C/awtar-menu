@@ -1,11 +1,5 @@
-/* ===================================================================
- * Lounge 1.0.0 - Main JS
- *
- *
- * ------------------------------------------------------------------- */
-
 (function (html) {
-  "use strict";
+  ("use strict");
 
   const cfg = {
     // MailChimp URL
@@ -35,6 +29,40 @@
       });
     });
   }; // end ssPreloader
+
+  const ssMenuCategories = function () {
+    const categoryBtns = document.querySelectorAll(".category-btn");
+    const menuSections = document.querySelectorAll(".menu-section");
+
+    if (!categoryBtns.length || !menuSections.length) return;
+
+    categoryBtns.forEach((btn) => {
+      btn.addEventListener("click", function () {
+        const category = this.dataset.category;
+
+        // Update active button
+        categoryBtns.forEach((b) => b.classList.remove("active"));
+        this.classList.add("active");
+
+        // Show corresponding section
+        menuSections.forEach((section) => {
+          section.classList.remove("active");
+        });
+
+        const targetSection = document.getElementById(category);
+        if (targetSection) {
+          targetSection.classList.add("active");
+        }
+
+        // Scroll button into view
+        this.scrollIntoView({
+          behavior: "smooth",
+          block: "nearest",
+          inline: "center",
+        });
+      });
+    });
+  }; // end ssMenuCategories
 
   /* move header
    * -------------------------------------------------- */
@@ -713,5 +741,6 @@
     ssMailChimpForm();
     ssAlertBoxes();
     ssSmoothScroll();
+    ssMenuCategories();
   })();
 })(document.documentElement);

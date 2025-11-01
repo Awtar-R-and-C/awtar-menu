@@ -1,0 +1,129 @@
+/* Add these CSS rules to prevent horizontal scrolling on mobile */
+
+/* Prevent horizontal overflow on body and html */
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+/* Ensure main containers don't overflow */
+#page,
+.s-pagewrap {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+/* Fix container widths */
+.container {
+  max-width: 100%;
+  overflow-x: hidden;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Fix menu categories horizontal scroll */
+.menu-categories {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+.categories-scroll {
+  display: flex;
+  gap: 10px;
+  padding: 10px 0;
+  min-width: min-content;
+}
+
+/* Fix grid layouts for mobile */
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Fix images from overflowing */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Fix category buttons */
+.category-btn {
+  flex-shrink: 0;
+  min-width: 100px;
+  max-width: 120px;
+}
+
+/* Fix intro section on mobile */
+.grid-block {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Ensure sections don't overflow */
+section {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.row {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Mobile specific fixes */
+@media screen and (max-width: 768px) {
+  .menu-grid {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 15px;
+    padding: 0 10px;
+  }
+
+  .container {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  /* Prevent text from causing overflow */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+  }
+
+  /* Fix menu item sizing */
+  .menu-item {
+    max-width: 100%;
+  }
+
+  .item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .item-name {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .menu-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+}
